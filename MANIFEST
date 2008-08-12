@@ -5,3 +5,4 @@ Build.pl
 example.php.t
 README
 MANIFEST
+t/01-simple.t
