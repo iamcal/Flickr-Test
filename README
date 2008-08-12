@@ -1,0 +1,41 @@
+Flickr::Test
+---------------------------------------------------------------------
+
+The Flickr PHP/Perl test harness thingy, based on Test::Harness.
+
+To get up and running, type this command in this dirctory:
+
+	perl -Ilib -MFlickr::Test -eruntests example.php.t
+
+This will use the harness to run the example test.
+
+Once you're happy, install the module by doing:
+
+perl Build.pl
+./Build
+./Build test
+./Build install
+
+(The install step may require sudo)
+
+Then the command to run a test becomes:
+
+	perl -MFlickr::Test -eruntests <<test_name(s)>>
+
+If you leave out <<test_name(s)>>, it looks for "t/*.t" and 
+"t/*/*.t" in the current directory.
+
+
+
+What is this doing?
+---------------------------------------------------------------------
+
+This is a wrapper around Test::Harness that also knows how to run 
+tests written in PHP. Just name them *.php.t for it to work. Inside
+your PHP tests, you can add this line:
+
+	include('Flickr/Test/Straps.php');
+
+This imports some functions equivalent to Test::Simple to make it
+easy to define basic tests. The harness makes sure straps.php is
+in the PHP include path. See the example.php.t file for an example.
